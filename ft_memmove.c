@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariafer <mariafer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 18:16:53 by mariafer          #+#    #+#             */
-/*   Updated: 2026/05/14 18:16:56 by mariafer         ###   ########.fr       */
+/*   Created: 2026/05/25 19:41:19 by mariafer          #+#    #+#             */
+/*   Updated: 2026/05/25 19:41:21 by mariafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
+void	*ft_memmove(void *dst, const void *src, size_t n)
+{
+	char	*tmp;
 
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-void	*ft_memset(void *s, int c, size_t len);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t n);
-
-#endif
+	tmp = (char *)malloc(sizeof(char) * n);
+	if (tmp == NULL)
+		return (NULL);
+	ft_memcpy(tmp, src, n);
+	ft_memcpy(dst, tmp, n);
+	free(tmp);
+	return (dst);
+}
