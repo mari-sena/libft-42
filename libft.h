@@ -18,6 +18,8 @@
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *s, int c, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t n);
@@ -31,5 +33,4 @@ size_t	ft_strlcat(
 			char *restrict dst,
 			const char *restrict src,
 			size_t dstsize);
-
 #endif
