@@ -12,19 +12,37 @@
 
 #include "libft.h"
 
+int	ft_handle_spaces(char str)
+{
+	return (str == ' '
+		|| str == '\n'
+		|| str == '\f'
+		|| str == '\r'
+		|| str == '\t'
+		|| str == '\v');
+}
+
 int	ft_atoi(const char *nptr)
 {
-	long	n;
-	int		i;
+	int	i;
+	int	n;
+	int	sign;
 
+	i = 0;
 	n = 0;
-	if (nptr[0] == '-')
-		n *= -1;
-	i = 1;
-	while (nptr[i])
+	sign = 1;
+	while (ft_handle_spaces(nptr[i]))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		return (nptr[i] - 48);
+		if (nptr[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (0);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		n = n * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (n * sign);
 }
