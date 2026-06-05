@@ -52,4 +52,10 @@ size_t	ft_strlcat(
 			char *restrict dst,
 			const char *restrict src,
 			size_t dstsize);
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+t_list	*ft_lstnew(void *content);
 #endif
