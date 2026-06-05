@@ -10,21 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+static void	ft_get_nbr_str(char *str, int n, size_t size)
+{
+	str[size] = '\0';
+	if (n >= 0)
+	{
+		while (size--)
+		{
+			str[size] = (n % 10) + '0';
+			n /= 10;
+		}
+	}
+	else
+	{
+		while (--size)
+		{
+			str[size] = (n % 10) * -1 + '0';
+			n /= 10;
+		}
+		str[size] = '-';
+	}
+}
+
 char	*ft_itoa(int n)
 {
 	char	*num;
+	size_t	size;
+	int		tmp;
 
-	if (n < 0)
+	if (n >= 0)
+		size = 1;
+	else
+		size = 2;
+	tmp = n / 10;
+	while (tmp)
 	{
-		n *= -1;
-		*num = '-';
+		size++;
+		tmp /= 10;
 	}
-	if (n < 10)
-		*num = n + '0';
-	while (n > 10)
-	{
-		n /= 10;
-		n 
-	}
+	num = malloc(size + 1);
+	if (num == NULL)
+		return (NULL);
+	ft_get_nbr_str(num, n, size);
 	return (num);
 }
