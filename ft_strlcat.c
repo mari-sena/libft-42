@@ -17,16 +17,16 @@ unsigned int	ft_dst_len(char *dst, size_t size)
 	unsigned int	i;
 
 	i = 0;
-	while (dst[i] != '\0' && i < size)
+	while (i < size && dst[i] != '\0')
 		i++;
 	return (i);
 }
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	unsigned int	i;
-	unsigned int	j;
-	size_t			src_size;
+	size_t	i;
+	size_t	j;
+	size_t	src_size;
 
 	j = 0;
 	i = ft_dst_len(dst, dstsize);
